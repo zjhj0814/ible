@@ -1,0 +1,20 @@
+#Email
+spring:
+  mail:
+    host: smtp.naver.com
+    port: 587
+    #Email 관련 정보는 깃허브 커밋 주의!(개인정보)
+    username: zjhj0814
+    password:
+#Email-Option
+  properties:
+    mail:
+      debug: true #메일 전송시 상황, 로그를 확인하는 것
+      smtp:
+        connectiontimeout: 5000
+        starttls: #SSL/TLS 기반의 SMTPS 기능 즉 보안기능 활성화
+          enable: true
+          required: true
+        auth: false
+
+
