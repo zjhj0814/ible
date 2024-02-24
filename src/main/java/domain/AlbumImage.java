@@ -9,15 +9,11 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class PostImage {
+public class AlbumImage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="postImage_id")
+    @Column(name = "albumImage_id")
     private Long id;
-
-    @OneToOne(fetch =FetchType.LAZY, mappedBy = "postImage")
-    @Column(name = "post_id")
-    private Post post;
 
     @Embedded
     private Image image;

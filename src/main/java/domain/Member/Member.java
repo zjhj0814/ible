@@ -1,6 +1,7 @@
 package domain.Member;
 
 import domain.Group;
+import domain.GroupName;
 import domain.Member.Email.Email;
 import domain.Post;
 import jakarta.persistence.*;
@@ -26,7 +27,7 @@ public class Member {
     private Email email;
 
     //
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name="group_id")
     @Setter
     private Group group;
@@ -34,4 +35,5 @@ public class Member {
     //
     @OneToMany(fetch=FetchType.LAZY, mappedBy = "post_id")
     private List<Post> posts;
+
 }
