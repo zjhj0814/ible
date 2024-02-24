@@ -3,31 +3,29 @@ package domain;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
 @Getter
 public class Group {
     @Id
+    @Setter
     @Column(name="group_id")
     @Enumerated(EnumType.STRING)
-    private GroupName id;
+    private GroupName groupName;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private GroupImage groupImage;
+    @OneToMany(mappedBy = "album_id")
+    private List<Album> alubums;
 
-    private String description; //string에서 다른 데이터 타입으로 변경하기
+    @OneToMany(mappedBy = "scheduel_id")
+    private List<Scheduel> scheduels;
 
-    @OneToOne(fetch =FetchType.LAZY, cascade = CascadeType.ALL)
-    private SNS sns;
-
-    //
-
-    private Scheduel scheduel;
-
-    private Album album;
-
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "board_id")
+    @Column(nullable = false)
     private Board board;
 
-    private GroupArtist groupArtist;
 }
