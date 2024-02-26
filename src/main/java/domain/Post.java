@@ -1,5 +1,6 @@
 package domain;
 
+import Dto.PostDto;
 import domain.Member.Member;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -45,14 +46,14 @@ public class Post {
     @Column(nullable = false)
     private String content;
 
-    @OneToMany(mappedBy = "board",orphanRemoval = true)
+    @OneToMany(mappedBy = "post",orphanRemoval = true)
     private List<Like> likes;
     private Long likeCnt;
     //private Long unlike;
 
     @Setter
     @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "post")
-    private List<Command> command;
+    private List<Command> commands;
 
     //글 쓴 작성자 수정하기
     //필요없는 기능인듯
@@ -61,7 +62,7 @@ public class Post {
     //마찬가지로 필요없는 기능인듯
 
     //제목과 본문 업데이트하기
-    public void update(BoardDto dto){
+    public void update(PostDto dto){
         this.title=dto.getTitle();
         this.content=dto.getContent();
     }
@@ -72,5 +73,12 @@ public class Post {
     }
     
     //댓글 추가하기
+    public void addCommand(Command command){
+        commands.add(command);
+    }
 
+    //좋아요 수 변경하기
+    public void likeChange(Long likeCnt){
+        this.likeCnt=likeCnt;
+    }
 }
