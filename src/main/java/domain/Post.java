@@ -17,12 +17,13 @@ import java.util.List;
 @AllArgsConstructor
 public class Post {
     @Id
-    @Column(name = "post_id")
+    @Column(name = "post_id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "board_id")
+    @Column(nullable = false)
     private Board board;
 
     @Column(nullable = false)
@@ -31,24 +32,45 @@ public class Post {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
+    @Column(nullable = false)
     private Member member;
 
     @CreatedDate
     private LocalDateTime createdDate;
 
-    @Setter
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "poastImage_id")
+    @JoinColumn(name = "postImage_id")
     private PostImage postImage;
 
     @Column(nullable = false)
     private String content;
 
-    private Long like;
-
-    private Long unlike;
+    @OneToMany(mappedBy = "board",orphanRemoval = true)
+    private List<Like> likes;
+    private Long likeCnt;
+    //private Long unlike;
 
     @Setter
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "command_id")
-    private List<Command> commands;
+    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "post")
+    private List<Command> command;
+
+    //글 쓴 작성자 수정하기
+    //필요없는 기능인듯
+    
+    //게시판 수정하기
+    //마찬가지로 필요없는 기능인듯
+
+    //제목과 본문 업데이트하기
+    public void update(BoardDto dto){
+        this.title=dto.getTitle();
+        this.content=dto.getContent();
+    }
+
+    //포스트 이미지 수정하기
+    public void setPostImage(PostImage postImage){
+        this.setPostImage(postImage);
+    }
+    
+    //댓글 추가하기
+
 }

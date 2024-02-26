@@ -17,7 +17,7 @@ public class Command {
     @Column(name = "command_id")
     private Long id;
 
-    @OneToOne(mappedBy="member_id")
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Member member;
 
     @Setter
