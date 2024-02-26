@@ -1,5 +1,6 @@
 package domain;
 
+import domain.group.Group;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,6 +16,7 @@ public class AlbumImage {
     @Column(name = "albumImage_id")
     private Long id;
 
-    @Embedded
-    private Image image;
+    private String original_filename;
+    private String savedFilename;
+
 }

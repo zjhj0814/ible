@@ -16,8 +16,8 @@ public class PostImage {
     private Long id;
 
     private String original_filename;
+    private String savedFilename;
 
-    @Embedded
-    @Column(nullable = false)
-    private Image image;
+    @OneToOne(fetch = FetchType.LAZY, mappedBy="postImage")
+    private Post post;
 }

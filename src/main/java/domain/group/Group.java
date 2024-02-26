@@ -20,10 +20,10 @@ public class Group {
     @Enumerated(EnumType.STRING)
     private GroupName groupName;
 
-    @OneToMany(mappedBy = "album_id")
+    @OneToMany(mappedBy = "group", cascade = CascadeType.ALL)
     private List<Album> albums;
 
-    @OneToMany(mappedBy = "scheduel_id")
+    @OneToMany(mappedBy = "group", cascade = CascadeType.ALL)
     private List<Scheduel> scheduels;
 
     @OneToOne(fetch = FetchType.LAZY)
