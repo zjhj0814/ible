@@ -1,5 +1,8 @@
-package domain;
+package domain.group;
 
+import domain.Album;
+import domain.Board;
+import domain.Scheduel;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,13 +21,12 @@ public class Group {
     private GroupName groupName;
 
     @OneToMany(mappedBy = "album_id")
-    private List<Album> alubums;
+    private List<Album> albums;
 
     @OneToMany(mappedBy = "scheduel_id")
     private List<Scheduel> scheduels;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "board_id")
     @Column(nullable = false)
     private Board board;
 

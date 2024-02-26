@@ -9,15 +9,12 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class PostImage {
+public class Like {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="postImage_id")
-    private Long id;
-
-    private String original_filename;
-
-    @Embedded
     @Column(nullable = false)
-    private Image image;
+    @OneToOne(mappedBy="member_id", fetch = FetchType.LAZY)
+    private String id;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Board board;
 }
