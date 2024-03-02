@@ -18,7 +18,7 @@ public class Email {
         if(isValidEmail(email)){
             this.email = email;
         }
-        else this.email=null; //email 형식에 맞지 않는 문자열인 경우, email에 널 대입
+        else this.email = null; //email 형식에 맞지 않는 문자열인 경우, email에 널 대입
     }
 
     //Email 수정 못하도록 setter 존재 X
