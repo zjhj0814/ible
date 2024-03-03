@@ -1,6 +1,5 @@
-package domain.Member.Email;
+package domain.Email;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,19 +14,18 @@ public class Email {
     private String email;
 
     public Email(String email) {
-        if(isValidEmail(email)){
-            this.email = email;
-        }
-        else this.email = null; //email 형식에 맞지 않는 문자열인 경우, email에 널 대입
+        this.email = null; //email 형식에 맞지 않는 문자열인 경우, email에 널 대입
     }
 
     //Email 수정 못하도록 setter 존재 X
 
-    private boolean isValidEmail(String email){
+    public void isValidEmail(){
         String regex = "^[a-zA-Z0-9]+@[0-9a-zA-Z]+\\.[a-z]+$"; //이메일 정규표현식
         Pattern p = Pattern.compile(regex);
         Matcher m = p.matcher(email);
-        return m.matches();
+        if(!m.matches()){
+            throw new IllegalStateException("이메일 형식에 맞지 않는 이메일입니다.");
+        }
     }
 
 }

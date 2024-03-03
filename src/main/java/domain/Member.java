@@ -1,18 +1,14 @@
-package domain.Member;
+package domain;
 
-import domain.Like;
 import domain.group.Group;
-import domain.Member.Email.Email;
+import domain.Email.Email;
 import domain.Post;
-import domain.group.GroupName;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.List;
 
 @Getter
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
 public class Member {
     @Id
@@ -27,7 +23,7 @@ public class Member {
     @Embedded
     private Email email;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="group_id")
     @Setter
     private Group group;
@@ -39,11 +35,5 @@ public class Member {
 //    @OneToOne(fetch = FetchType.LAZY, orphanRemoval = true)
 //    @JoinColumn(name = "like_cnt")
 //    private List<Like> likes; //유저가 누른 좋아요 리스트
-
-    //관심 그룹 수정하기 -> 그냥 setter로 수정하면 안 되나..?
-    public GroupName setGroup(GroupName groupName){
-        group.setGroupName(groupName);
-        return group.getGroupName();
-    }
 
 }

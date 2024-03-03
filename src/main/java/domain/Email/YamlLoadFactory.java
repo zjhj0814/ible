@@ -1,13 +1,4 @@
-package domain.Member.Email;
-
-import org.springframework.beans.factory.config.YamlPropertiesFactoryBean;
-import org.springframework.context.annotation.PropertySource;
-import org.springframework.core.env.PropertiesPropertySource;
-import org.springframework.core.io.support.EncodedResource;
-import org.springframework.core.io.support.PropertySourceFactory;
-
-import java.io.IOException;
-import java.util.Properties;
+package domain.Email;
 
 //yml 파일로 properties 파일을 생성하는 어노테이션에 yml 파일도
 //인식시키기 위해 YamlLoadFactory 클래스를 상속받아 구현하고자 했지만

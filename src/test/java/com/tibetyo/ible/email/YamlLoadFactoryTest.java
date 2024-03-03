@@ -1,11 +1,6 @@
-package Member.Email;
+package com.tibetyo.ible.email;
 
-import org.junit.platform.commons.logging.LoggerFactory;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-
-import java.util.logging.Logger;
 
 @SpringBootTest
 class YamlLoadFactoryTest {
