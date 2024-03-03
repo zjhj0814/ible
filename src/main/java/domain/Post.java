@@ -1,7 +1,6 @@
 package domain;
 
 import Dto.PostDto;
-import domain.Member.Member;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
